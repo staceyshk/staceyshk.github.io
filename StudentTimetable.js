@@ -29,7 +29,7 @@ $(function() {
     }
 
     var percentage = getTotalDuration(instructionalMeetings)/getTotalDuration(meetings) * 100;
-    $('.duration-text').text(percentage);
+    $('.duration-text').text(percentage.toFixed(2) + '%');
   }
 
   function getTotalDuration(meetings) {

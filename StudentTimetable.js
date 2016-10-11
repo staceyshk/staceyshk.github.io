@@ -4,7 +4,7 @@ $(function() {
 
   function addStudents(students) {
     for (var index in students) {
-      $('.student-dropdown').append($('<option>', {value: students[index], text: students[index]}));
+      $('.student-dropdown').append($('<option>', {text: students[index]}));
     }
 
     getStudentTimetable();
@@ -15,10 +15,10 @@ $(function() {
     var studentUrl = 'https://crystal-pepsi.herokuapp.com/students/:student_name/meetings'
       .replace(':student_name', student);
 
-    $.get(studentUrl, processTimetable);
+    $.get(studentUrl, updateInstructionTimePercentage);
   }
 
-  function processTimetable(meetings) {
+  function updateInstructionTimePercentage(meetings) {
     var instructionalMeetings = [];
 
     for (var index in meetings) {
@@ -29,7 +29,7 @@ $(function() {
     }
 
     var percentage = getTotalDuration(instructionalMeetings)/getTotalDuration(meetings) * 100;
-    $('.duration-text').text(percentage.toFixed(2) + '%');
+    $('.duration-text').text(percentage.toFixed(2) + '%');    
   }
 
   function getTotalDuration(meetings) {
